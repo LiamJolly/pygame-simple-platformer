@@ -11,7 +11,7 @@ def main():
 
 	screen = pygame.display.set_mode(size)
 	
-	player = Player("images/ball.bmp")
+	player = Player("images/player.png")
 	clock = pygame.time.Clock()
 
 	while 1:
@@ -22,6 +22,11 @@ def main():
 				return
 			else:
 				player.move(event)
+		if (player.playerRect.bottom < 500):
+			player.isFalling = 1
+		else:
+			player.isFalling = 0
+		
 	        player.update()
 		screen.blit(player.playerImage, player.playerRect)
 	        pygame.display.flip()
