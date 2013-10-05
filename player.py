@@ -1,14 +1,16 @@
 import pygame, sys
 
-class Player(object):
+class Player(pygame.sprite.Sprite):
 	isFalling = 0
 	isJumping = 0
 	movingLeft = 0
 	movingRight = 0
 
 	def __init__(self, image):
-		self.playerImage = pygame.image.load(image)
-        	self.playerRect = self.playerImage.get_rect()
+                pygame.sprite.Sprite.__init__(self)
+
+		self.image = pygame.image.load(image)
+        	self.rect = self.image.get_rect()
 
 	def move(self, event):
 		if (event.type == pygame.KEYDOWN):
@@ -36,4 +38,4 @@ class Player(object):
 		if (self.isFalling ==1):
 			movement[1] = 2
 
-	        self.playerRect = self.playerRect.move(movement)
+	        self.rect = self.rect.move(movement)
